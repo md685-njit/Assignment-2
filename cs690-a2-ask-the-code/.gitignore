@@ -1,0 +1,23 @@
+# Your key and settings. Never commit this.
+.env
+
+# The virtual environment. Recreate it with: python3 -m venv .venv
+.venv/
+venv/
+env/
+
+# The downloaded embedding model (Step 7). Recreated automatically on first use.
+.models/
+
+# Python bytecode and caches.
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Editor and OS clutter.
+.vscode/
+.idea/
+.DS_Store
+
+# NOTE: results/ and ai_replies/ are NOT ignored. Commit them; the grader
+# needs them to check and reproduce your experiments (HANDOUT.md, Step 5).
