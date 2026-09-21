@@ -1,0 +1,16 @@
+[
+  {
+    "id": "example-1",
+    "question": "Does requests keep the Authorization header when a redirect goes from http to https on the same host?",
+    "expected_file": "sessions.py",
+    "expected_function": "SessionRedirectMixin.should_strip_auth",
+    "expected_answer": "Yes. For an http to https redirect on the same host with the standard ports, should_strip_auth returns False, so the header is kept (lines 137 to 143)."
+  },
+  {
+    "id": "example-2",
+    "question": "Which company pays for hosting the requests documentation?",
+    "expected_file": null,
+    "expected_function": null,
+    "expected_answer": "The code cannot answer this. A correct reply says not found in the code shown, with null file and line."
+  }
+]

@@ -1,0 +1,6 @@
+# Tested together on Python 3.12 in September 2026. Supported: Python 3.11 to 3.13.
+anthropic==1.7.0
+openai==3.16.2
+python-dotenv==1.2.3
+fastembed==0.8.0
+pytest==9.1.1
