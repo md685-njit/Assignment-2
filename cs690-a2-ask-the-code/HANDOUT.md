@@ -6,7 +6,7 @@ Setup and commands are in README.md. The grading checklist is in RUBRIC.md.
 ## What you will build
 
 You will write a small Python program that answers questions about a codebase you did
-not write: the `requests` library, the same code we used in the Week 4 lecture. The
+not write: the `requests` library, the same code we used in the Week 3 lecture. The
 program works in four steps:
 
 1. Split the code into pieces, one per function.
@@ -47,8 +47,8 @@ The meaning search in Step 7 runs on your laptop for free.
 
 ## What you write, and what is given
 
-You write five files. Everything else is given; read it, but do not change it (the
-grader restores the given files before grading).
+You write five code files and one questions file. Everything else is given; read it,
+but do not change it (the grader restores the given files before grading).
 
 | You write | What it does | Step |
 | --- | --- | --- |
@@ -125,8 +125,10 @@ Done when: `python -m askcode.check_setup` prints "All checks passed."
 
 ### Step 1. Write your ten questions (30 minutes)
 
-Slides 54 to 57 and 62. You started this in class; the three questions you wrote there
-are your first three.
+In lecture we covered the golden set: what a good question looks like, why some
+questions should have no answer in the code, and why you freeze the set before you
+measure. You started this in class; the three questions you wrote there are your first
+three.
 
 1. Replace the two examples in `questions/questions.json` with ten questions of your
    own, with ids `q01` to `q10`. Do not reuse the two examples.
@@ -144,7 +146,7 @@ are your first three.
 5. Commit the file before you run anything:
    `git add questions/questions.json` then `git commit -m "Freeze my questions"`.
 
-This is the freeze rule from slide 57. If you write questions after seeing results, you
+This is the freeze rule from lecture. If you write questions after seeing results, you
 will write the ones that pass. After your first results commit, do not change this file;
 `python -m askcode.check_freeze` checks it. Fixing a misspelled function name before your
 first results commit is fine.
@@ -154,7 +156,8 @@ after Step 2, because it uses your splitter to check the function names.)
 
 ### Step 2. Split the code into functions (45 minutes)
 
-Slides 40 to 42: the cut decides what can be found.
+In lecture we covered how you cut the code into pieces, and why the cut decides what
+can be found.
 
 Write `split_file` and `split_corpus` in `askcode/split.py`, using Python's built-in
 `ast` module. A method becomes a chunk named `ClassName.method_name`; decorators belong
@@ -167,7 +170,7 @@ Done when: `pytest tests/test_split.py` and `pytest tests/test_questions.py` pas
 
 ### Step 3. Search by words (45 minutes)
 
-Slide 45: keyword search, and what it misses.
+In lecture we covered keyword search, and what it misses.
 
 Write `search_words` in `askcode/search_words.py`. A chunk scores points for every
 question word it contains, and rare words score more than common ones. In this codebase,
@@ -186,8 +189,9 @@ Done when: `pytest tests/test_search_words.py` passes and the results file exist
 
 ### Step 4. Build the prompt and check the reply (60 minutes)
 
-Slides 5 to 7 (a prompt is a spec, in five parts), 20 and 26 (standing instructions go
-first), 30 to 33 (JSON your program can use, and what a schema does not buy you), and 49.
+In lecture we covered the five parts of a prompt, standing instructions and why the
+stable part goes first, and getting JSON your program can use, including what a schema
+does not buy you.
 
 Part A. Write `build_prompt_five_part` in `askcode/prompt.py`. The prompt has two parts:
 
@@ -201,8 +205,8 @@ Your rules must say what to do when the code shown does not answer the question:
 Part B. Write `parse_reply` in `askcode/answer.py`. Your program trusts nothing the AI
 sends until it passes this check: exactly one JSON object, exactly the keys answer, file
 and line, with the right types. A reply that adds a friendly sentence around the JSON
-fails, and that is the point (slide 37). A reply that passes is well formed, not
-necessarily true; that is what Step 5 measures.
+fails, and that is the point, as you saw in the class exercise. A reply that passes is
+well formed, not necessarily true; that is what Step 5 measures.
 
 Before you spend anything, look at a real prompt and the cost estimate:
 
@@ -212,8 +216,8 @@ Done when: `pytest tests/test_prompt.py` and `pytest tests/test_answer.py` pass.
 
 ### Step 5. Measure it (45 minutes)
 
-Slides 24 and 25 (tokens are the bill; stuffing everything in fails) and 58 to 61
-(measure, then find whose fault it is).
+In lecture we covered why tokens are the bill and why stuffing everything in fails,
+and how to measure a wrong answer and decide whose fault it is.
 
 1. Run three experiments. Each asks the AI all ten questions, with different code in
    the prompt:
@@ -253,7 +257,7 @@ Done when: the three files exist with every `correct` cell filled, and they are 
 
 ### Step 6. Addition 1: does the five-part prompt beat a minimal one? (30 minutes)
 
-Slides 4 to 8: what makes one prompt better than another.
+In lecture we covered what makes one prompt better than another.
 
 The given `build_prompt_minimal` in core.py sends just the question, the code and "Reply
 in JSON with the keys answer, file and line." No goal, no rules, no example. Run it on
@@ -269,8 +273,8 @@ Done when: `results/top3_words_minimal.csv` has every `correct` cell filled and 
 
 ### Step 7. Addition 2: search by meaning (60 minutes)
 
-Slides 43 to 47: embeddings, and why keyword search and meaning search fail in opposite
-directions.
+In lecture we covered embeddings, and why keyword search and meaning search fail in
+opposite directions.
 
 Write `cosine` and `MeaningIndex` in `askcode/search_meaning.py`. The given `embed.py`
 turns text into 384 numbers with a small free model on your own laptop; texts with
@@ -288,7 +292,7 @@ Done when: the tests pass and `results/retrieval_meaning.csv` is committed.
 
 ### Step 8. Write the report and finish the ledger (30 minutes)
 
-Slide 63: the decision rule.
+In lecture we covered the decision rule: paste what you can afford, retrieve the rest.
 
 1. Run `python -m askcode.summary` and paste Tables 1 and 2 into REPORT.md exactly as
    printed. The grader runs the same command and compares.
