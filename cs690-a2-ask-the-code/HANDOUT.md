@@ -302,7 +302,7 @@ Slide 63: the decision rule.
 
 ## What to submit
 
-Push your repository to GitHub and submit its link on Canvas, as with Assignment 1. It
+Push your repository to GitHub and submit the repo link on Canvas. It
 must contain:
 
 - your five code files and `questions/questions.json`
