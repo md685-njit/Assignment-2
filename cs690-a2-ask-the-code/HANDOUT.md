@@ -21,7 +21,7 @@ and, when it is wrong, whether the search or the AI is to blame.
 
 ## Why this matters at work
 
-Everything you build here is something developers build and debug in industry.
+**Everything you build here in this assignment is something developers build and debug in industry.**
 
 | What you build | Where it shows up at work |
 | --- | --- |
