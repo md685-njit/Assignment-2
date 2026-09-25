@@ -6,7 +6,7 @@ Setup and commands are in README.md. The grading checklist is in RUBRIC.md.
 ## What you will build
 
 You will write a small Python program that answers questions about a codebase you did
-not write: the `requests` library, the same code we used in the Week 3 lecture. The
+not write: the `requests` library, the same code we used in the Week 4 lecture. The
 program works in four steps:
 
 1. Split the code into pieces, one per function.
